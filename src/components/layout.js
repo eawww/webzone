@@ -5,14 +5,35 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from "react"
+import React, { useState } from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
 import "./layout.css"
 
+const NUM_STARS = 500
+const MAX_STAR_R = 0.3 // Percent
+
+const starCoords = Array.from(new Array(NUM_STARS)).map(() => ({
+  x: Math.random() * 100,
+  y: Math.random() * 100,
+  r: Math.random(),
+}))
+
 const Layout = ({ children }) => {
+  const [screenHeight, setScreenHeight] = useState(window.innerHeight)
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth)
+
+  window.addEventListener(
+    "resize",
+    () => {
+      setScreenHeight(window.innerHeight)
+      setScreenWidth(window.innerWidth)
+    },
+    true
+  )
+
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -25,21 +46,25 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0px 1.0875rem 1.45rem`,
-          paddingTop: 0,
-        }}
+      <svg
+        className="svgCanvasStars"
+        viewBox={`0 0 ${screenWidth} ${screenHeight}`}
+        xmlns="http://www.w3.org/2000/svg"
       >
+        {starCoords.map(star => (
+          <circle
+            cx={`${star.x}%`}
+            cy={`${star.y}%`}
+            r={`${star.r * MAX_STAR_R}%`}
+            stroke-width="0"
+            fill="#FFF"
+          ></circle>
+        ))}
+      </svg>
+      <Header siteTitle={data.site.siteMetadata.title} />
+      <div>
         <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
+        <footer>© {new Date().getFullYear()}, Eric Wilson</footer>
       </div>
     </>
   )
