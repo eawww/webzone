@@ -15,15 +15,18 @@ import "./layout.css"
 const NUM_STARS = 500
 const MAX_STAR_R = 0.3 // Percent
 
+let keyBullshit = 0
+
 const starCoords = Array.from(new Array(NUM_STARS)).map(() => ({
   x: Math.random() * 100,
   y: Math.random() * 100,
   r: Math.random(),
+  key: keyBullshit++,
 }))
 
 const Layout = ({ children }) => {
-  const [screenHeight, setScreenHeight] = useState()
-  const [screenWidth, setScreenWidth] = useState()
+  const [screenHeight, setScreenHeight] = useState(0)
+  const [screenWidth, setScreenWidth] = useState(0)
 
   useEffect(() => {
     const resetWindowDimensions = () => {
@@ -59,10 +62,11 @@ const Layout = ({ children }) => {
       >
         {starCoords.map(star => (
           <circle
+            key={star.key}
             cx={`${star.x}%`}
             cy={`${star.y}%`}
             r={`${star.r * MAX_STAR_R}%`}
-            stroke-width="0"
+            strokeWidth="0"
             fill="#FFF"
           ></circle>
         ))}
