@@ -5,7 +5,7 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
@@ -22,17 +22,23 @@ const starCoords = Array.from(new Array(NUM_STARS)).map(() => ({
 }))
 
 const Layout = ({ children }) => {
-  const [screenHeight, setScreenHeight] = useState(window.innerHeight)
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth)
+  const [screenHeight, setScreenHeight] = useState()
+  const [screenWidth, setScreenWidth] = useState()
 
-  window.addEventListener(
-    "resize",
-    () => {
+  useEffect(() => {
+    const resetWindowDimensions = () => {
       setScreenHeight(window.innerHeight)
       setScreenWidth(window.innerWidth)
-    },
-    true
-  )
+    }
+    resetWindowDimensions()
+    window.addEventListener(
+      "resize",
+      () => {
+        resetWindowDimensions()
+      },
+      true
+    )
+  }, [])
 
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
