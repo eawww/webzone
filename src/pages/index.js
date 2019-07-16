@@ -10,7 +10,7 @@ const NUM_STARS = 500
 
 const IndexPage = () => (
   <Layout>
-    <SEO title="Home" />
+    <SEO title="🏚" />
     <marquee height="50%">
       <img className="underConstruction" src={underConstruction} />
     </marquee>
