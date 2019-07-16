@@ -10,6 +10,7 @@ import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
+import Stars from "./stars"
 import "./layout.css"
 
 const NUM_STARS = 500
@@ -25,24 +26,6 @@ const starCoords = Array.from(new Array(NUM_STARS)).map(() => ({
 }))
 
 const Layout = ({ children }) => {
-  const [screenHeight, setScreenHeight] = useState(0)
-  const [screenWidth, setScreenWidth] = useState(0)
-
-  useEffect(() => {
-    const resetWindowDimensions = () => {
-      setScreenHeight(window.innerHeight)
-      setScreenWidth(window.innerWidth)
-    }
-    resetWindowDimensions()
-    window.addEventListener(
-      "resize",
-      () => {
-        resetWindowDimensions()
-      },
-      true
-    )
-  }, [])
-
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -55,22 +38,7 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <svg
-        className="svgCanvasStars"
-        viewBox={`0 0 ${screenWidth} ${screenHeight}`}
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        {starCoords.map(star => (
-          <circle
-            key={star.key}
-            cx={`${star.x}%`}
-            cy={`${star.y}%`}
-            r={`${star.r * MAX_STAR_R}%`}
-            strokeWidth="0"
-            fill="#FFF"
-          ></circle>
-        ))}
-      </svg>
+      <Stars />
       <Header siteTitle={data.site.siteMetadata.title} />
       <div>
         <main>{children}</main>
