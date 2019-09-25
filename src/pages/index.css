@@ -1,9 +1,75 @@
-.underConstruction {
-  width: 35vh;
-}
-
 .svgCanvasStars {
   position: absolute;
   top: 0;
   left: 0;
+}
+
+.squareMeOnALion {
+  width: 60%;
+  border-radius: 50%;
+  margin: auto;
+  border: 1vw solid white;
+}
+
+.theBusiness {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.gradientDivider {
+  margin: 0;
+  height: 40px;
+  border: none;
+  background-image: linear-gradient(#f1c584, #0000);
+  color: #ff0;
+  position: relative;
+  margin-bottom: -20px;
+}
+
+.theTops {
+  position: absolute;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  font-size: 5vw;
+  padding-top: 7vh;
+}
+
+.nameHeader {
+  margin: 0;
+  margin-right: 5%;
+  text-align: right;
+  right: 5%;
+  color: #d0eefe;
+}
+
+.subtitle {
+  margin: 0;
+  margin-top: 1vh;
+  margin-right: 5%;
+  margin-left: 50%;
+  text-align: right;
+  right: 0;
+  color: #d0e0f0;
+  font-size: 0.8em;
+}
+
+@media (max-aspect-ratio: 1/1) {
+  .theTops {
+    padding-top: 3vh;
+  }
+  .nameHeader {
+    font-size: 4em;
+  }
+  .subtitle {
+    margin-left: 20%;
+    margin-top: 0;
+    font-size: 1em;
+  }
+}
+
+@media (min-aspect-ratio: 1/1) {
+  .nameHeader {
+    font-size: 2.5em;
+  }
 }
