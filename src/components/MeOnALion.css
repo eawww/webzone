@@ -1,0 +1,41 @@
+.MeOnALionSVG {
+  height: 100%;
+  transition: height 1s;
+  position: absolute;
+  bottom: 0;
+}
+
+@media all and (max-width: 480px) {
+  .MeOnALionSVG {
+    height: 100vw;
+    left: -10%;
+  }
+}
+
+@media all and (max-width: 320px) {
+  .MeOnALionSVG {
+    height: 100vw;
+    left: -10%;
+  }
+}
+
+@media (max-aspect-ratio: 1/1) {
+  .MeOnALionSVG {
+    height: 70vh;
+    left: 0%;
+  }
+}
+
+@media (min-aspect-ratio: 1/1) {
+  .MeOnALionSVG {
+    height: 97vh;
+    left: -10%;
+  }
+}
+
+.MeOnALionBackground {
+  position: relative;
+  overflow: hidden;
+  height: 97vh;
+  background-image: linear-gradient(to bottom, #3e69a0 30%, #7ea0cd);
+}
