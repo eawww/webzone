@@ -9,13 +9,9 @@ import MeOnALion from "../components/MeOnALion"
 
 const NUM_STARS = 500
 
-const IndexPage = ({ data }) => (
+const IndexPage = () => (
   <Layout>
     <SEO title="🏚" />
-    {/* <Image
-      className={"squareMeOnALion"}
-      fluid={data.lionman.childImageSharp.fluid}
-    /> */}
     <MeOnALion />
     <div className="theTops">
       <h1 className="nameHeader">Eric Wilson</h1>
@@ -36,17 +32,5 @@ const IndexPage = ({ data }) => (
     </div>
   </Layout>
 )
-
-export const query = graphql`
-  query {
-    lionman: file(relativePath: { eq: "squaremeonalion.jpg" }) {
-      childImageSharp {
-        fluid(maxWidth: 700, maxHeight: 700) {
-          ...GatsbyImageSharpFluid_withWebp
-        }
-      }
-    }
-  }
-`
 
 export default IndexPage
