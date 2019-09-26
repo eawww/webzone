@@ -1,29 +1,8 @@
-.svgCanvasStars {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
 .squareMeOnALion {
   width: 60%;
   border-radius: 50%;
   margin: auto;
   border: 1vw solid white;
-}
-
-.theBusiness {
-  margin-left: 20px;
-  margin-right: 20px;
-}
-
-.gradientDivider {
-  margin: 0;
-  height: 40px;
-  border: none;
-  background-image: linear-gradient(#f1c584, #0000);
-  color: #ff0;
-  position: relative;
-  margin-bottom: -20px;
 }
 
 .theTops {

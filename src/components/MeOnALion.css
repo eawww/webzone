@@ -38,4 +38,5 @@
   overflow: hidden;
   height: 97vh;
   background-image: linear-gradient(to bottom, #3e69a0 30%, #7ea0cd);
+  box-shadow: 0 0 20px 7px #999;
 }
