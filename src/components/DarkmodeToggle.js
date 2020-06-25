@@ -10,7 +10,7 @@ const DISPLAY_ATTRIBUTES = {
 }
 
 const DarkmodeToggle = ({darkmodeCallback}) => {
-  const [darkMode, setDarkmode] = useState(true);
+  const [darkMode, setDarkmode] = useState(false);
   const theme = darkMode ? `DARK` : `LIGHT`;
   console.log(theme)
   
