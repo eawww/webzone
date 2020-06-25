@@ -1,10 +1,15 @@
-import React, { useContext } from "react"
+import React, { useContext, useState } from "react"
 import "./MeOnALion.css"
 
 import { ScreenSizeContext } from "../contexts/ScreenSize";
 import COLORS from './MeOnALionColors';
 
 const MeOnALion = ({darkMode}) => {
+  const [starData] = useState(Array.from(Array(100)).map(() => ({
+    r: Math.random() * 20,
+    cx: Math.random() * 11260,
+    cy: Math.random() * 8600,
+  })))
   const ScreenSize = useContext(ScreenSizeContext)
   const theme = darkMode ? 'DARK' : 'LIGHT';
   console.log(ScreenSize)
@@ -24,7 +29,16 @@ const MeOnALion = ({darkMode}) => {
           strokeLinejoin: "round",
           strokeMiterlimit: 1.5,
         }}
-      >
+      > 
+
+        {
+          starData.map((star) => (
+            <circle
+              fill={darkMode ? '#fff' : '#0000'}
+              {...star}
+            />
+          ))
+        }
         <g className="meOnALionImage" transform="matrix(4.16667,0,0,4.16667,0,0)">
             <g id="lion-rock">
               <path
